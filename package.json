@@ -19,12 +19,14 @@
   },
   "homepage": "https://github.com/EthanTungnung/MyOnlineGallery#readme",
   "dependencies": {
-    "aws-sdk": "^2.1692.0",
-    "bcrypt": "^6.0.0",
+    "mongoose": "^8.17.1"
+  },
+  "devDependencies": {
     "express": "^5.1.0",
+    "bcrypt": "^6.0.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.17.1",
     "multer": "^2.0.2",
+    "aws-sdk": "^2.1692.0",
     "sharp": "^0.34.3"
   }
 }

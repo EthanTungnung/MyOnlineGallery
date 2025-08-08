@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = document.getElementById('register-password').value;
 
         try {
-            const res = await fetch('/api/users/register', {
+            const res = await fetch('/api/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, email, password })
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = document.getElementById('login-password').value;
 
         try {
-            const res = await fetch('/api/users/login', {
+            const res = await fetch('/api/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password })
@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('category', currentCategory);
 
         try {
-            const res = await fetch('/api/images/upload', {
+            const res = await fetch('/api/upload', {
                 method: 'POST',
                 headers: { 'x-auth-token': token },
                 body: formData
@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const newCategory = prompt('Enter new category:', 'Nature');
             if (newCategory && categories.includes(newCategory)) {
                 try {
-                    const res = await fetch(`/api/images/${imageId}`, {
+                    const res = await fetch(`/api/image/${imageId}`, {
                         method: 'PUT',
                         headers: {
                             'Content-Type': 'application/json',
