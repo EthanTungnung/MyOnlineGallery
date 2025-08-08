@@ -1,16 +1,16 @@
 const connectDB = require('../backend/config/db');
-const auth = require('../backend/middleware/auth'); // This middleware needs to be adapted for serverless
+const auth = require('./middleware/auth');
 const multer = require('multer');
 const AWS = require('aws-sdk');
 const Image = require('../backend/models/Image');
 const sharp = require('sharp');
+const connectDB = require('../backend/config/db');
 
 // Configure AWS
-// Make sure to set your AWS credentials in your environment variables
 const s3 = new AWS.S3({
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REGION || 'us-east-1' // Default region, change if needed
+  region: process.env.AWS_S3_REGION || 'us-east-1' // Default region, change if needed
 });
 
 // Configure Multer for file uploads
@@ -21,7 +21,7 @@ const upload = multer({
   },
 });
 
-module.exports = async (req, res) => {
+module.exports = auth(async (req, res) => {
   await connectDB();
 
   if (req.method === 'POST') {
@@ -32,14 +32,6 @@ module.exports = async (req, res) => {
       } else if (err) {
         return res.status(500).json({ msg: err.message });
       }
-
-      // Authentication middleware (needs to be adapted for serverless)
-      // For now, we'll assume req.user is set by a preceding auth step or mock it.
-      // In a real Vercel setup, you'd likely use a separate serverless function for auth
-      // or handle it within this function if it's simple token verification.
-      // For this example, we'll bypass auth for now to get the upload working.
-      // You'll need to implement proper authentication for production.
-      req.user = { id: '60d5ec49f8c7d00015f8e3b1' }; // Mock user ID for testing
 
       try {
         const { originalname, buffer, mimetype } = req.file;
@@ -52,9 +44,10 @@ module.exports = async (req, res) => {
           .jpeg({ quality: 80 })
           .toBuffer();
 
+        const s3Key = `${userId}/${Date.now()}_${originalname}`;
         const s3Params = {
-          Bucket: process.env.S3_BUCKET_NAME, // Use environment variable for S3 bucket name
-          Key: `${userId}/${Date.now()}_${originalname}`,
+          Bucket: process.env.AWS_S3_BUCKET_NAME, // Use environment variable for S3 bucket name
+          Key: s3Key,
           Body: compressedImageBuffer,
           ContentType: mimetype,
           ACL: 'public-read',
@@ -65,7 +58,8 @@ module.exports = async (req, res) => {
         const newImage = new Image({
           user: userId,
           url: s3Data.Location,
-          filename: s3Data.Key,
+          filename: originalname,
+          s3Key: s3Key,
           category: category || 'Uncategorized',
         });
 
@@ -79,4 +73,4 @@ module.exports = async (req, res) => {
   } else {
     res.status(405).send('Method Not Allowed');
   }
-};
+});

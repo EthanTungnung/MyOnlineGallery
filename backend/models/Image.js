@@ -14,6 +14,10 @@ const ImageSchema = new Schema({
     type: String,
     required: true
   },
+  s3Key: {
+    type: String,
+    required: true
+  },
   category: {
     type: String,
     required: true
