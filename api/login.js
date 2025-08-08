@@ -2,6 +2,7 @@ const connectDB = require('../backend/config/db'); // Assuming you'll create thi
 const User = require('../backend/models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const connectDB = require('../backend/config/db');
 
 module.exports = async (req, res) => {
   await connectDB();
