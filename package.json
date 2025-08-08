@@ -1,0 +1,30 @@
+{
+  "name": "myonlinegallery",
+  "version": "1.0.0",
+  "description": "This is a simple image gallery application with a functioning upload system.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EthanTungnung/MyOnlineGallery.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/EthanTungnung/MyOnlineGallery/issues"
+  },
+  "homepage": "https://github.com/EthanTungnung/MyOnlineGallery#readme",
+  "dependencies": {
+    "aws-sdk": "^2.1692.0",
+    "bcrypt": "^6.0.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.17.1",
+    "multer": "^2.0.2",
+    "sharp": "^0.34.3"
+  }
+}

@@ -1,19 +1,93 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    background-color: #000033; /* Midnight Blue */
-    color: #e0e0ff; /* Light blue for text */
+    background-color: #00033D;
+    color: #F2E6EE;
+}
+
+#auth-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+#auth-container .auth-form {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    background-color: #0600AB;
+    border-radius: 8px;
+}
+
+#auth-container .auth-form.active {
+    display: flex;
+}
+
+#auth-container a {
+    color: #977DFF;
+    text-decoration: none;
+}
+
+#auth-container a:hover {
+    text-decoration: underline;
+}
+
+#auth-container input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #977DFF;
+    background-color: #00033D;
+    color: #F2E6EE;
+}
+
+#auth-container button {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #0033FF;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#user-profile {
+    text-align: center;
+    padding: 20px;
+}
+
+.gallery-controls {
+    margin-bottom: 20px;
+}
+
+#search-bar {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#user-profile button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #977DFF;
+    color: #000033;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 header {
-    background-color: #000044;
+    background-color: #0600AB;
     padding: 1em;
     text-align: center;
 }
 
 h1 {
-    color: #9999ff; /* Glowing effect for title */
-    text-shadow: 0 0 10px #9999ff, 0 0 20px #9999ff;
+    color: #977DFF;
+    text-shadow: 0 0 10px #977DFF, 0 0 20px #977DFF;
 }
 
 nav ul {
@@ -29,7 +103,7 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: #e0e0ff;
+    color: #F2E6EE;
     font-weight: bold;
     padding: 5px 10px;
     border-radius: 5px;
@@ -38,9 +112,9 @@ nav ul li a {
 
 nav ul li a:hover,
 nav ul li a.active {
-    background-color: #000066;
-    color: #ffffff;
-    box-shadow: 0 0 8px #e0e0ff, 0 0 15px #e0e0ff;
+    background-color: #0600AB;
+    color: #FFFFFF;
+    box-shadow: 0 0 8px #977DFF, 0 0 15px #977DFF;
 }
 
 #gallery-container {
@@ -51,7 +125,7 @@ nav ul li a.active {
 }
 
 .image-grid-item {
-    background-color: #000055;
+    background-color: #0033FF;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
@@ -67,8 +141,8 @@ nav ul li a.active {
 }
 
 .upload-grid-item {
-    background-color: #000066;
-    border: 2px dashed #9999ff;
+    background-color: #0600AB;
+    border: 2px dashed #977DFF;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
@@ -76,13 +150,13 @@ nav ul li a.active {
     align-items: center;
     cursor: pointer;
     transition: all 0.3s ease;
-    color: #9999ff;
-    text-shadow: 0 0 5px #9999ff;
+    color: #977DFF;
+    text-shadow: 0 0 5px #977DFF;
 }
 
 .upload-grid-item:hover {
-    background-color: #000077;
-    box-shadow: 0 0 15px #9999ff, 0 0 25px #9999ff;
+    background-color: #0033FF;
+    box-shadow: 0 0 15px #977DFF, 0 0 25px #977DFF;
 }
 
 .upload-grid-item input[type="file"] {
