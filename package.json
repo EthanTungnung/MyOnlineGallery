@@ -1,6 +1,6 @@
 {
   "name": "myonlinegallery",
-  "version": "1.0.0",
+  "version": "1.0.0", 
   "description": "This is a simple image gallery application with a functioning upload system.",
   "main": "script.js",
   "scripts": {
@@ -19,9 +19,7 @@
   },
   "homepage": "https://github.com/EthanTungnung/MyOnlineGallery#readme",
   "dependencies": {
-    "mongoose": "^8.17.1"
-  },
-  "devDependencies": {
+    "mongoose": "^8.17.1",
     "express": "^5.1.0",
     "bcrypt": "^6.0.0",
     "jsonwebtoken": "^9.0.2",
